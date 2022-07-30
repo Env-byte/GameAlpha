@@ -1,0 +1,9 @@
+[requires]
+mariadb-connector-c/3.1.12
+jsoncpp/1.9.5
+
+[generators]
+cmake
+CMakeDeps
+CMakeToolchain
+cmake_find_package
