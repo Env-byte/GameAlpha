@@ -1,37 +1,57 @@
 //
 // Created by Tom Penn on 24/07/2022.
 //
-
 #ifndef TESTPROJECTS_USER_H
 #define TESTPROJECTS_USER_H
 
 #include <string>
+#include<array>
 
 using namespace std;
 
-namespace Users {
+typedef char **MYSQL_ROW;
+typedef array<shared_ptr<class Ability>, 4> AbilityList;
 
-    class User {
+class User {
 
-    public:
-        void SetName(const string &nameIn);
+public:
+    void SetName(const string &nameIn);
 
-        string GetName() const;
+    const string &GetName() const;
 
-        void SetId(int idIn);
+    void SetId(int idIn);
 
-        int GetId() const;
+    int GetId() const;
 
-        void SetLevel(int levelIn);
+    void SetLevel(int levelIn);
 
-        int GetLevel() const;
+    int GetLevel() const;
 
-    protected:
-        int id;
-        int level;
-        string name;
-    };
+    void SetBossNo(int bossNoIn);
 
-} // Users
+    int GetBossNo() const;
+
+    void SetStats(const string &statsIn);
+
+    const string &GetStats() const;
+
+    static unique_ptr<User> fromRow(MYSQL_ROW row);
+
+    shared_ptr<Ability> GetAbility(const int &index);
+
+    AbilityList* GetAbilities();
+
+    void AddAbility(shared_ptr<class Ability> ability);
+
+protected:
+    int id;
+    int level;
+    int bossNo;
+    string name;
+    string stats;
+
+    AbilityList Abilities;
+};
+
 
 #endif //TESTPROJECTS_USER_H

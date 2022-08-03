@@ -7,9 +7,15 @@
 
 #include <mysql.h>
 
-class BaseController {
+class Manager {
 public:
-     explicit BaseController(MYSQL *dbIn);
+    explicit Manager(MYSQL *dbIn);
+
+    explicit Manager();
+
+    void SetDb(MYSQL *dbIn);
+
+    virtual void Init() = 0;
 
 protected:
     MYSQL *db;

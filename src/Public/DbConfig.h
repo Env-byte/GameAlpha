@@ -11,7 +11,7 @@
 
 class DbConfig {
 public:
-    MYSQL* init();
+    static MYSQL* init();
 
     static void CloseConnection(MYSQL *conn);
 };

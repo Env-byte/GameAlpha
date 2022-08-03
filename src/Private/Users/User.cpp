@@ -6,28 +6,55 @@
 #include <string>
 
 using std::string;
-namespace Users {
-    string User::GetName() const {
-        return name;
-    }
 
-    void User::SetName(const string &nameIn) {
-        name = nameIn;
-    }
+const string &User::GetName() const {
+    return name;
+}
 
-    void User::SetId(int idIn) {
-        id = idIn;
-    }
+void User::SetName(const string &nameIn) {
+    name = nameIn;
+}
 
-    int User::GetId() const {
-        return id;
-    }
+void User::SetId(int idIn) {
+    id = idIn;
+}
 
-    void User::SetLevel(int levelIn) {
-        level = levelIn;
-    }
+int User::GetId() const {
+    return id;
+}
 
-    int User::GetLevel() const {
-        return level;
-    }
+void User::SetLevel(int levelIn) {
+    level = levelIn;
+}
+
+int User::GetLevel() const {
+    return level;
+}
+
+unique_ptr<User> User::fromRow(MYSQL_ROW row) {
+    std::unique_ptr<User> user;
+
+    user->SetId(std::stoi(row[0]));
+    user->SetName(row[1]);
+    user->SetLevel(std::stoi(row[2]));
+    user->SetBossNo(std::stoi(row[3]));
+    user->SetStats(row[4]);
+
+    return user;
+}
+
+int User::GetBossNo() const {
+    return bossNo;
+}
+
+void User::SetBossNo(int bossNoIn) {
+    bossNo = bossNoIn;
+}
+
+const string &User::GetStats() const {
+    return stats;
+}
+
+void User::SetStats(const string &statsIn) {
+    stats = statsIn;
 }

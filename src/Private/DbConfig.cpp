@@ -20,7 +20,7 @@ MYSQL *DbConfig::init() {
             "localhost", // Host
             "root",            // User account
             "123",   // User password
-            "TestProject",               // Default database
+            "GameAlpha",               // Default database
             3306,                 // Port number
             nullptr,                 // Path to socket file
             0                     // Additional options
