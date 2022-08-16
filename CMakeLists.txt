@@ -11,6 +11,7 @@ find_package(jsoncpp)
 find_package(Boost)
 
 file(GLOB_RECURSE TestProject_SRC "src/*.h" "src/*.cpp")
+include_directories("src/public")
 add_executable(${PROJECT_NAME} ${TestProject_SRC})
 
 target_link_libraries(${PROJECT_NAME} mariadb-connector-c::mariadb-connector-c)

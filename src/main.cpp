@@ -1,8 +1,7 @@
 #include <iostream>
-#include "Public/DbConfig.h"
-#include "Public/Loop/MainLoop.h"
-#include "Public/Globals.h"
+#include "DbConfig.h"
 #include <stdexcept>
+#include "Menus/MenuManger.h"
 
 using namespace std;
 
@@ -15,13 +14,13 @@ int main() {
         return -1;
     }
     cout << "Connected to database" << std::endl;
-    InitManagers(db);
-    unique_ptr<MainLoop> loop(new MainLoop(db));
-    loop->Start();
+
+    auto *menu = new MenuManager(db);
+    menu->LoadMenu(EMenus::EMain);
 
     DbConfig::CloseConnection(db);
 
-    delete db;
+    delete menu;
 
     return 0;
 }
