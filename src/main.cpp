@@ -19,8 +19,6 @@ int main() {
     menu->LoadMenu(EMenus::EMain);
 
     DbConfig::CloseConnection(db);
-
     delete menu;
-
     return 0;
 }

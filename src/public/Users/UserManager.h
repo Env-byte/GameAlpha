@@ -8,13 +8,14 @@
 #include "User.h"
 #include "Manager.h"
 
+using namespace std;
 
-typedef std::vector<std::unique_ptr<User>> UserList;
+typedef vector<unique_ptr<User>> UserList;
 
 class UserManager : public Manager {
     using Manager::Manager;
 public:
-    unique_ptr<User> GetUser(const string &name);
+    unique_ptr<User> Get(const string &name);
 
     unique_ptr<User> GetUserById(const int &id);
 

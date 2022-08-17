@@ -9,7 +9,7 @@
 
 using namespace std;
 
-unique_ptr<User> UserManager::GetUser(const string &name) {
+unique_ptr<User> UserManager::Get(const string &name) {
 
     unique_ptr<User> ThisUser = nullptr;
     MYSQL_RES *rset;
@@ -34,11 +34,10 @@ unique_ptr<User> UserManager::AddUser(const string &name) {
     if (mysql_query(db, ss.str().c_str())) {
         throw runtime_error(string("\nError inserting into users\n") + mysql_error(db));
     }
-    return GetUser(name);
+    return Get(name);
 }
 
 UserList UserManager::GetAll() {
-
     if (mysql_query(db, "SELECT id,name,level,bossNo FROM `users`")) {
         throw runtime_error(string("\nError getting all from users\n") + mysql_error(db));
     }
@@ -56,7 +55,6 @@ UserList UserManager::GetAll() {
         }
     }
     mysql_free_result(result);
-
 
     return users;
 }

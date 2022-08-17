@@ -31,10 +31,6 @@ public:
 
     int GetBossNo() const;
 
-    void SetStats(const string &statsIn);
-
-    const string &GetStats() const;
-
     static unique_ptr<User> fromRow(MYSQL_ROW row);
 
     shared_ptr<Ability> GetAbility(const int &index);

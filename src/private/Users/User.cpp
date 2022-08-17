@@ -38,7 +38,6 @@ unique_ptr<User> User::fromRow(MYSQL_ROW row) {
     user->SetName(row[1]);
     user->SetLevel(std::stoi(row[2]));
     user->SetBossNo(std::stoi(row[3]));
-    user->SetStats(row[4]);
 
     return user;
 }
@@ -49,12 +48,4 @@ int User::GetBossNo() const {
 
 void User::SetBossNo(int bossNoIn) {
     bossNo = bossNoIn;
-}
-
-const string &User::GetStats() const {
-    return stats;
-}
-
-void User::SetStats(const string &statsIn) {
-    stats = statsIn;
 }
